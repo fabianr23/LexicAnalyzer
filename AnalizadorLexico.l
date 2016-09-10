@@ -15,12 +15,12 @@ las  |
 un   |
 uno  |
 una  |
-unos | 
-una { printf ("%s: es un articulo \n" ,yytext);
+unos |
+unas { printf ("%s: es un articulo \n" ,yytext);
 }
 	
-abrir |
-acabar |
+abrira* |
+acabara* |
 aconsejar |
 amar |
 apoyar |
@@ -141,8 +141,182 @@ volver |
 volverse { printf("%s : es un verbo \n", yytext);
 
 }
+
+agua	|	
+hojas   |	
+persona |
+botella | 
+hombre  | 	
+petróleo |
+café 	 |	
+lapicera |	
+piso 	 |
+caramelos |
+lentejas  |
+plato     |
+cartas 	  | 
+letra     |
+playa     |
+castillo  |
+libros    |
+pradera   |
+chocolate |	
+cortina   |
+radio     |
+computadora | 
+lima     | 	
+remate   |
+crema    | 	
+luz      |	
+remera   |
+mapa     | 	
+rey      | 
+flor     |
+debate   |
+mono     | 
+rúcula   |
+desodorante  |
+montañas | 	
+servilleta |
+diarios  |	
+parlante | 	
+teatro   |
+diputado |	
+tecla    |
+estadística | 	
+perfume  | 	
+templo   |
+gobierno |	
+perro    |	
+zapato   |
+hipopótamo  |	
+percha   |	
+zoológico |
+comida {	printf("%s : Es un sustantivo. \n", yytext);
+	}
+
+
+abierto |
+acido 	 |
+afilado |
+agrio 	|
+alto 	|
+amable 	|
+ancho 	|
+aspero 	|
+bajo 	 |
+barato 	 |
+brillante 	 |
+bueno 	 |
+calido	|
+caluroso 	|
+cansado 	|
+ceñido 		|
+apretado |
+cerrado |
+claro 	|
+contrario 	|
+corto 	|
+cruel 	 |
+debil 	 |
+delgado 	 |
+delicado 	|
+fino 	 |
+derecha	|
+correcto |
+despierto |
+dulce 	|
+duro 	 |
+empinado 	|
+enfadado |
+enfermo 	|
+enorme	        |
+erroneo 	|
+especial 	|
+estrecho 	|
+estupendo 	|
+extraño 	|
+falso 	 |
+feliz 	 |
+fisico 	 |
+frio 	 |
+fuerte 	 |
+fat 	|
+grueso	|
+espeso 	|
+hueco 	|
+humedo 	|
+importante 	 |
+izquierda 	 |
+joven 	 |
+largo 	 |
+lento 	 |
+libre 	 |
+ligero 	|
+limpio 	 |
+lleno 	 |
+malo 	 |
+natural |
+necesario 	|
+normal 	 |
+nuevo 	 |
+oscuro 	|
+paralelo 	|
+pegajoso 	|
+pequeño 	|
+pesado |
+picante 	|
+plano |
+llano 	|
+pobre 	 |
+posible 	|
+precioso 	|
+preparado 	 |
+privado 	|
+profundo 	 |
+rapido 	 |
+recto 	 |
+directo 	|
+repentino 	|
+ruidoso 	|
+sabio 	 |
+saludable 	|
+seco 	 |
+seguro 	|
+serio 	 |
+simple 	 |
+solido 	 |
+suave 	 |
+sucio 	 |
+tarde 	 |
+temprano 	|
+tieso 	 |
+tonto
+insensato 	 |
+tranquilo 	 |
+triste 	 |
+verdadero 	 |
+viejo 	 |
+violento |
+ric+[oa] {	printf("%s : es un adjetivo.", yytext);
+
+}
+ric+[a]+[c]+[h]+[u] {printf("%s: es un pokemon", yytext);}
+
+
+
+
+
+
+
+
+
+
+
+
+
  
-[a-zA-Z]+ {printf("%s : No es un articulo \n", yytext);
+[a-zA-Z]+ {printf("%s : No se reconoce la categoría léxica.  \n", yytext);
 
 	}
 
