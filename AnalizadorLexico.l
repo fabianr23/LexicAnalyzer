@@ -15,12 +15,12 @@ las  |
 un   |
 uno  |
 una  |
-unos |
-unas { printf ("%s: es un articulo \n" ,yytext);
+unos | 
+una { printf ("%s: es un articulo \n" ,yytext);
 }
 	
-abrira* |
-acabara* |
+abrir |
+acabar |
 aconsejar |
 amar |
 apoyar |
@@ -142,181 +142,206 @@ volverse { printf("%s : es un verbo \n", yytext);
 
 }
 
-agua	|	
-hojas   |	
-persona |
-botella | 
-hombre  | 	
-petróleo |
-café 	 |	
-lapicera |	
-piso 	 |
-caramelos |
-lentejas  |
-plato     |
-cartas 	  | 
-letra     |
-playa     |
-castillo  |
-libros    |
-pradera   |
-chocolate |	
-cortina   |
-radio     |
-computadora | 
-lima     | 	
-remate   |
-crema    | 	
-luz      |	
-remera   |
-mapa     | 	
-rey      | 
-flor     |
-debate   |
-mono     | 
-rúcula   |
-desodorante  |
-montañas | 	
-servilleta |
-diarios  |	
-parlante | 	
-teatro   |
-diputado |	
-tecla    |
-estadística | 	
-perfume  | 	
-templo   |
-gobierno |	
-perro    |	
-zapato   |
-hipopótamo  |	
-percha   |	
-zoológico |
-comida {	printf("%s : Es un sustantivo. \n", yytext);
-	}
-
-
-abierto |
-acido 	 |
-afilado |
-agrio 	|
-alto 	|
-amable 	|
-ancho 	|
-aspero 	|
-bajo 	 |
-barato 	 |
-brillante 	 |
-bueno 	 |
-calido	|
-caluroso 	|
-cansado 	|
-ceñido 		|
-apretado |
-cerrado |
-claro 	|
-contrario 	|
-corto 	|
-cruel 	 |
-debil 	 |
-delgado 	 |
-delicado 	|
-fino 	 |
-derecha	|
-correcto |
-despierto |
-dulce 	|
-duro 	 |
-empinado 	|
-enfadado |
-enfermo 	|
-enorme	        |
-erroneo 	|
-especial 	|
-estrecho 	|
-estupendo 	|
-extraño 	|
-falso 	 |
-feliz 	 |
-fisico 	 |
-frio 	 |
-fuerte 	 |
-fat 	|
-grueso	|
-espeso 	|
-hueco 	|
-humedo 	|
-importante 	 |
-izquierda 	 |
-joven 	 |
-largo 	 |
-lento 	 |
-libre 	 |
-ligero 	|
-limpio 	 |
-lleno 	 |
-malo 	 |
+aburrido |
+ácido |
+alegre |
+alto |
+amargo |
+ancho |
+atrevido |
+azul |
+bajo |
+blanco |
+blando |
+bonito |
+buen |
+bueno |
+caliente |
+capaz |
+central |
+chungo |
+común |
+conocido |
+contento |
+corto  |
+débil  |
+delgado |
+derecho |
+diferente |
+difícil | 
+divertido |
+dulce |
+duro |
+enfermo |
+estrecho |
+exterior |
+fácil |
+falso |
+famoso |
+feo |
+final |
+fresco |
+frío |
+fuerte |
+gordo |
+grande |
+guapo |
+húmedo |
+igual |
+imposible |
+interesante |
+interior |
+inútil |
+izquierdo |
+joven |
+largo |
+lento |
+listo |
+malo |
+masivo |
+mayor |
+mejor |
+menor |
+mucho |
+muerto |
+musical |
+nacional |
 natural |
-necesario 	|
-normal 	 |
-nuevo 	 |
-oscuro 	|
-paralelo 	|
-pegajoso 	|
-pequeño 	|
-pesado |
-picante 	|
-plano |
-llano 	|
-pobre 	 |
-posible 	|
-precioso 	|
-preparado 	 |
-privado 	|
-profundo 	 |
-rapido 	 |
-recto 	 |
-directo 	|
-repentino 	|
-ruidoso 	|
-sabio 	 |
-saludable 	|
-seco 	 |
-seguro 	|
-serio 	 |
-simple 	 |
-solido 	 |
-suave 	 |
-sucio 	 |
-tarde 	 |
-temprano 	|
-tieso 	 |
-tonto
-insensato 	 |
-tranquilo 	 |
-triste 	 |
-verdadero 	 |
-viejo 	 |
-violento |
-ric+[oa] {	printf("%s : es un adjetivo.", yytext);
+negro |
+nuevo |
+peor |
+pequeño |
+perfecto |
+pobre |
+poco |
+popular |
+posible |
+primer |
+primero |
+principal |
+próximo |
+rápido |
+raro |
+recto |
+rico |
+rojo |
+salado |
+sano |
+seco |
+segundo |
+simple |
+social |
+solo |
+tímido |
+tonto |
+triste |
+útil |
+verdadero |
+verde |
+viejo |
+vivo { printf("%s : es un adjetivo \n", yytext);
 
 }
-ric+[a]+[c]+[h]+[u] {printf("%s: es un pokemon", yytext);}
 
+abrelatas |
+aire |
+Andrea |
+Andrés |
+animal |
+Antonia |
+Antonio |
+Argentina |
+átomo |
+Belén |
+Beto |
+botón |
+Brasil |
+Bruselas |
+cable |
+calculadora |
+carpeta |
+cartera |
+celular |
+cerradura |
+césped |
+Chile |
+chrome |
+círculo |
+ciudad |
+ciruela |
+claridad |
+clavel |
+competencia |
+computadora |
+cuerda |
+Dinamarca |
+diodo |
+disposición |
+drogas |
+escuela |
+esfera |
+esquina |
+eugenia |
+excel |
+Fernanda |
+Francia |
+galleta |
+Guadalupe |
+guitarra |
+hoja |
+idea |
+Juanita |
+juguete |
+julio |
+loros |
+manantial |
+mausoleo |
+mesa |
+México |
+molécula |
+mouse |
+mueble |
+Nicolás |
+notas |
+paint |
+pantalla |
+París |
+parlante |
+pelusa |
+periférico |
+perro |
+piscina |
+planta |
+Polonia |
+posavasos |
+programa |
+puerta |
+química |
+rectángulo |
+ropa |
+silla |
+sonido |
+suciedad |
+sustancia |
+televisor |
+tierra |
+tigre |
+Tomás |
+trabajador |
+trabajo |
+triángulo |
+tulipán |
+utensilio |
+vaso |
+ventana |
+vidrio |
+violín |
+visita { printf("%s : es un sustantivo \n", yytext);
 
-
-
-
-
-
-
-
-
-
-
+}
 
  
-[a-zA-Z]+ {printf("%s : No se reconoce la categoría léxica.  \n", yytext);
+[a-zA-Z]+ {printf("%s : No es un articulo \n", yytext);
 
 	}
 
