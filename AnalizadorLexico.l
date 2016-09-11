@@ -1,25 +1,41 @@
-%{
-
-
-
-
-%}
-
-%%
+%{ 
+#include <stdio.h> 
+#include <conio.h> 
+int articulosCount = 0, verbosCount = 0, adjetivosCount = 0,  
+sustantivosCount = 0,  naturalesCount = 0,  enterosCount = 0,
+ realesCount = 0, complejosCount = 0, aritmeticosCount = 0, 
+ puntuacionCount = 0;
+int num_lineas = 0, num_caracteres = 0; 
+%} 
+%option noyywrap 
+%option yylineno 
+letra [a-zA-ZÑñáéíóúÁÉÍÓÚ]
+digito [0-9] 
+binario [0-1] 
+ignora " "|t|n 
+operarit [*|+|-|/] 
+operlog &|$ 
+comparador <|>|<=|>=|==|!=
+aritmetico [*|+|-|/|(|)]
+signopunt [,|.|:|¿|?|¡|!]
+entero [0-9]*
+%% 
 [\t]+ /*ignore whitespaces */;
 
 el   |
-la   |
+las?  |
 los  |
-las  |
-un   |
-uno  |
-una  |
-unos |
-unas { printf ("%s: es un articulo \n" ,yytext);
+un[aos]* { printf ("%s: es un articulo \n" ,yytext);
+			articulosCount++;
 }
-	
-abrira* |
+
+est+[aoyrnmsd]* |
+soy |
+s*e[rean]* |
+eres |
+son |
+estrenar*n*d*o* |
+abra*e*i*m*o*r*e*a*o*s*n*e* |
 acabara* |
 aconsejar |
 amar |
@@ -139,7 +155,7 @@ visitar |
 vivir |
 volver |
 volverse { printf("%s : es un verbo \n", yytext);
-
+			verbosCount++;
 }
 
 agua	|	
@@ -162,8 +178,8 @@ libros    |
 pradera   |
 chocolate |	
 cortina   |
-radio     |
-computadora | 
+[Rr]adios*     |
+computadora* | 
 lima     | 	
 remate   |
 crema    | 	
@@ -171,7 +187,7 @@ luz      |
 remera   |
 mapa     | 	
 rey      | 
-flor     |
+flor[es]* |
 debate   |
 mono     | 
 rúcula   |
@@ -192,10 +208,16 @@ zapato   |
 hipopótamo  |	
 percha   |	
 zoológico |
-comida {	printf("%s : Es un sustantivo. \n", yytext);
+comida |
+estudiante |
+hoy |
+[pasado]*manana | 
+profe[sor]* |
+loc[ao] {	printf("%s : Es un sustantivo. \n", yytext);
+			sustantivosCount++;
 	}
 
-
+perezoso |
 abierto |
 acido 	 |
 afilado |
@@ -222,7 +244,7 @@ debil 	 |
 delgado 	 |
 delicado 	|
 fino 	 |
-derecha	|
+derecha |
 correcto |
 despierto |
 dulce 	|
@@ -291,43 +313,85 @@ sucio 	 |
 tarde 	 |
 temprano 	|
 tieso 	 |
-tonto
+tonto |
 insensato 	 |
 tranquilo 	 |
 triste 	 |
 verdadero 	 |
 viejo 	 |
 violento |
-ric+[oa] {	printf("%s : es un adjetivo.", yytext);
-
+ric+[oa] {	printf("%s : es un adjetivo. \n", yytext);
+				adjetivosCount++;
 }
-ric+[a]+[c]+[h]+[u] {printf("%s: es un pokemon", yytext);}
+
+-?[0-9]+([.][0-9]*)?+i { 
+	printf ("%s: es un numero complejo \n" ,yytext);
+	complejosCount++;
+}
+
+-?[0-9]+([.][0-9]+)+ { 
+	printf ("%s: es un numero real \n" ,yytext);
+	realesCount++;
+}
+
+[0-9]*  {
+	printf("%s: Es un numero natural \n", yytext);
+	naturalesCount++;
+}
+
+-?[0-9]+ {
+	printf("%s: Es un numero entero \n", yytext);
+	enterosCount++;
+}
+
+[*+)/(-] {
+	printf("%s: Es un operador aritmetico \n", yytext);
+	aritmeticosCount++;
+}
+
+[.,:¿?¡!] {
+	printf(" %s : Es un signo de puntuacion \n", yytext);
+	puntuacionCount++;
+}
+
+[0-9]+! {
+	printf("%s: Indica el factorial \n", yytext);
+}
 
 
 
-
-
-
-
-
-
-
-
-
-
- 
-[a-zA-Z]+ {printf("%s : No se reconoce la categoría léxica.  \n", yytext);
+[a-zA-Z]+ {printf("%s : No se reconoce la categoria lexica.  \n", yytext);
 
 	}
 
 
+.|\n
+n ++num_lineas; 
+. {printf("ERROR LEXICO EN LINEA %d n",yylineno);} 
+%% 
+int main(int argc,char *argv[]) 
+{ 
+char NomArch[30]; 
+printf("Ingrese nombre de archivo: " ); 
+gets(NomArch); 
+if ((yyin = fopen("prueba.txt", "rt" )) == NULL) 
+{ 
+printf("nNo se puede abrir el archivo: %sn", NomArch); 
+} 
+else 
+{ 
+yylex();
+printf("Cantidad de articulos encontrados: %d\n",articulosCount);
+printf("Cantidad de verbos encontrados: %d\n",verbosCount);
+printf("Cantidad de sustantivos encontrados: %d\n",sustantivosCount);
+printf("Cantidad de numeros naturales encontrados: %d\n",naturalesCount);
+printf("Cantidad de numeros reales encontrados: %d\n",realesCount);
+printf("Cantidad de numeros complejos encontrados: %d\n",complejosCount);
+printf("Cantidad de operadores aritmeticos encontrados: %d\n",aritmeticosCount);
+printf("Cantidad de signos de puntuacion encontrados: %d\n",puntuacionCount); 
+} 
 
-
-.|\n {
-	ECHO; /*normal default */
-}
-
-%%
-main(){
-	yylex();
+fclose(yyin); 
+getch(); 
+return 0; 
 }
